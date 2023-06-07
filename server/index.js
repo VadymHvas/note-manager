@@ -3,14 +3,15 @@ import mongoose from "mongoose";
 import { registerUser, loginUser, getMe } from "./controllers/AuthController.js";
 import { registerValidation } from "./validations/AuthValidation.js";
 import { checkAuth } from "./middlewares/CheckAuth.js";
+import dotenv from "dotenv/config";
 import cors from "cors";
 
-const DB_URL = "mongodb+srv://novakoriss:Vadym7711@noteapp.6ddxkgl.mongodb.net/manager?retryWrites=true&w=majority";
+const DB_URL = process.env.DB_URL;
 
 mongoose.connect(DB_URL)
     .then(() => console.log("DATABASE OK"))
     .catch(() => console.log("DATABASE ERROR"));
-
+ 
 const app = express();
 
 app.use(express.json());

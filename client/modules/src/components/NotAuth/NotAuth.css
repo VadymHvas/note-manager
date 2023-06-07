@@ -1,0 +1,58 @@
+.not-auth {
+    background-color: #B6452C;
+    color: #f4f4f4;
+    padding: 0 50px 50px;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+.not-auth .title {
+    text-align: center;
+}
+
+.not-auth h2 {
+    font-weight: 400;
+    text-align: center;
+}
+
+.not-auth label {
+    color: #a7a7a7;
+}
+
+.not-auth .username, .password {
+    position: relative;
+}
+
+.not-auth input {
+    width: 100%;
+}
+
+.not-auth label[for="username"] {
+    position: absolute;
+    top: 33%;
+    left: 10px;
+}
+
+.password, .repeat-password  {
+    margin-top: 35px;
+    position: relative;
+}
+
+.not-auth label[for="password"], .not-auth label[for="repeat-password"] {
+    position: absolute;
+    top: 5%;
+    left: 10px;
+}
+
+.login-signup {
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.submit-button {
+    margin-top: 15px;
+}
+
+.submit-button button {
+    width: 100%;
+}

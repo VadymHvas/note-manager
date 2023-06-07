@@ -1,38 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;500;600;700&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Geologica;
+  background-color: #DDC5A2;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* Ready components */
 
 .form-input {
   outline: none;
   border: 0;
-  padding: 5px 10px;
-  font-size: 16px;
-  border-bottom: 1.5px solid silver;
-  }
-
-.form-input:focus {
-  border-bottom: 1.5px solid #d33;
+  padding: 25px 4px 6px 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  font-family: Geologica;
 }
 
-.form-button {
-  border-radius: 50px;
+.solid-btn {
   border: 0;
-  background-color: #d33;
-  color: #fff;
+  background-color: #DDC5A2;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #523634;
+  padding: 15px 25px;
   cursor: pointer;
-  padding: 10px 20px;
+  transition: all .3s ease-out;
+} 
+
+.solid-btn:hover {
+  background-color: #523634;
+  color: #DDC5A2
 }
 
-.form-button:hover {
-  background-color: #b32d2d;
-}
+/* #301B28, #523634, #B6452C, #DDC5A2 */
