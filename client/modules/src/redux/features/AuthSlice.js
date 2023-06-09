@@ -8,17 +8,31 @@ const initialState =  {
     token: null, 
 };
 
-export const register = createAsyncThunk("auth/register", async ({username, password}) => {
-    const res = await axios.post("/auth/register", {username, password});
+export const register = createAsyncThunk("auth/register", async (params) => {
+    const { data } = await axios.post("/auth/register", params);
 
-    return res;
+    if (data.token) {
+        window.localStorage.setItem("token", data.token);
+    };
+
+    return data;
 });
 
-export const login = createAsyncThunk("auth/login", async ({username, password}) => {
-    const res = await axios.post("/auth/login", {username, password});
+export const login = createAsyncThunk("auth/login", async (params) => {
+    const { data } = await axios.post("/auth/login", params);
 
-    return res;
+    if (data.token) {
+        window.localStorage.setItem("token", data.token);
+    };
+
+    return data;
 });
+
+export const getMe = createAsyncThunk("auth/getMe", async () => {
+    const { data } = await axios.get("/getMe");
+
+    return data;
+})
 
 export const authSlice = createSlice({
     name: "auth",
@@ -32,15 +46,39 @@ export const authSlice = createSlice({
     extraReducers: {
         // register
 
-        [register.pending]: () => console.log("loading"),
+        [register.pending]: (state, action) => {
+            state.loading = true;
+        },
 
         [register.fulfilled]: (state, action) => {
-            state.user = action.payload.data.doc;
-            state.message = action.payload.data.message;
-            state.token = action.payload.data.token;
+            state.user = action.payload.doc;
+            state.message = action.payload.message;
+            state.token = action.payload.token;
+            state.loading = false;
         },
 
         [register.rejected]: () => console.log("sokkk"),
+
+        // Login
+
+        [login.pending]: (state) => {
+            state.loading = true;
+        },
+        [login.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.token = action.payload.token;
+            state.user = action.payload.user;
+            state.message = action.payload.message;
+        },
+        [login.rejected]: () => {},
+
+        // Get me
+
+        [getMe.pending]: () => {},
+        [getMe.fulfilled]: (state, action) => {
+            state.user = action.payload.user;
+            state.token = action.payload.token;
+        },
     },
 });
 

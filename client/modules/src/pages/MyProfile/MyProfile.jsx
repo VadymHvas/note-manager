@@ -13,6 +13,8 @@ const MyProfile = () => {
 
     const logoutUser = () => {
         dispatch(logout());
+
+        window.localStorage.removeItem("token");
     };
 
     React.useEffect(() => {

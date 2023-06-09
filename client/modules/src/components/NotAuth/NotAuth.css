@@ -1,3 +1,8 @@
+.not-auth-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .not-auth {
     background-color: #B6452C;
     color: #f4f4f4;
@@ -55,4 +60,8 @@
 
 .submit-button button {
     width: 100%;
+}
+
+.errors span {
+    color: rgb(255, 138, 138);
 }

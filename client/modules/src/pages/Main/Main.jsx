@@ -6,36 +6,32 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { checkAuth } from '../../redux/features/AuthSlice';
 import NotAuth from '../../components/NotAuth/NotAuth';
+import { logout } from '../../redux/features/AuthSlice';
 
 const Main = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const message = useSelector(state => state.auth.message);
     const isAuth = useSelector(checkAuth);
+
     const { user } = useSelector(state => state.auth);
-    
-    const [username, setUsername] = React.useState("");
-    const [password, setPassword] = React.useState("");
 
-    const handlerSubmit = () => {
-        dispatch(
-            register({username, password})
-        );
-    };
+    const logoutHandler = () => {
+        dispatch(logout());
 
-    React.useEffect(() => {
-        if (isAuth) navigate(`/me/${user._id}`);
-    }, [isAuth, navigate]);
+        window.localStorage.removeItem("token");
+    }
 
-    console.log(isAuth);
-    
     return (
         <main>
-            {isAuth ? (
-                <>Hello!</>
+            {window.localStorage.getItem("token") ? (
+                <>
+                    <button onClick={() => logoutHandler()}>logout</button>
+                    <h1>Hello, {user.username}</h1>
+                </>
             ) : (
                 <NotAuth />
             )}
+
         </main>
     );
 };

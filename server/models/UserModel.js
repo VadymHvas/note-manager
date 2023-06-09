@@ -11,10 +11,10 @@ const UserSchema = new mongoose.Schema({
         required: true,
     },
 
-    todos: {
+    notes: [{
         type: mongoose.Types.ObjectId,
         ref: "Todos",
-    },
+    }],
 }, {
     timestamps: true,
 });

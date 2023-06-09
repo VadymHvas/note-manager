@@ -1,6 +1,7 @@
 import UserModel from "../models/UserModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv/config.js";
 
 export const registerUser = async (req, res) => {
     const { username, password } = req.body;
@@ -20,12 +21,11 @@ export const registerUser = async (req, res) => {
 
     const token = jwt.sign({
         id: doc._id,
-    }, "nuggets", {expiresIn: "30d"});
+    }, process.env.JWT_SECRET, {expiresIn: "300d"});
 
     await doc.save();
 
     return res.json({
-        message: "Успішно!",
         doc,
         token,
     });
@@ -52,7 +52,7 @@ export const loginUser = async (req, res) => {
 
     const token = jwt.sign({
         id: user._id,
-    }, "nuggets", {expiresIn: "30d"});
+    }, process.env.JWT_SECRET, {expiresIn: "30d"});
 
     return res.json({
         user, 
@@ -71,7 +71,7 @@ export const getMe = async (req, res) => {
 
     const token = jwt.sign({
         id: user._id,
-    }, "nuggets", {expiresIn: "30d"});
+    }, process.env.JWT_SECRET, {expiresIn: "300d"});
 
     return res.json({
         user,
