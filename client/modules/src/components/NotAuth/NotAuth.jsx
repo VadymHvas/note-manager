@@ -147,7 +147,11 @@ const NotAuth = () => {
                 </span>
               </div>
               
-              {loading ? <Spinner /> : <></>}
+              {loading ? (
+                <div className="loading">
+                  <Spinner />
+                </div>
+              ) : <></>}
 
               <div className="submit-button">
                 <button className="solid-btn" onClick={() => loginHandler()}>Увійти</button>

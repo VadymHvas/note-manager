@@ -7,7 +7,6 @@
     background-color: #B6452C;
     color: #f4f4f4;
     padding: 0 50px 50px;
-    margin-top: 50px;
     border-radius: 10px;
 }
 
@@ -64,4 +63,8 @@
 
 .errors span {
     color: rgb(255, 138, 138);
+}
+
+.loading {
+    margin-top: 10px;
 }

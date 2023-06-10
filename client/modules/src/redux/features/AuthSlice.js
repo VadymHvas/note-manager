@@ -32,7 +32,13 @@ export const getMe = createAsyncThunk("auth/getMe", async () => {
     const { data } = await axios.get("/getMe");
 
     return data;
-})
+});
+
+export const updateAccount = createAsyncThunk("auth/updateAccount", async (params) => {
+    const { data } = await axios.post("/updateAccount", params);
+
+    return data;
+});
 
 export const authSlice = createSlice({
     name: "auth",
@@ -46,22 +52,20 @@ export const authSlice = createSlice({
     extraReducers: {
         // register
 
-        [register.pending]: (state, action) => {
+        [register.pending]: state => {
             state.loading = true;
         },
-
         [register.fulfilled]: (state, action) => {
             state.user = action.payload.doc;
             state.message = action.payload.message;
             state.token = action.payload.token;
             state.loading = false;
         },
-
         [register.rejected]: () => console.log("sokkk"),
 
         // Login
 
-        [login.pending]: (state) => {
+        [login.pending]: state => {
             state.loading = true;
         },
         [login.fulfilled]: (state, action) => {
@@ -78,6 +82,15 @@ export const authSlice = createSlice({
         [getMe.fulfilled]: (state, action) => {
             state.user = action.payload.user;
             state.token = action.payload.token;
+        },
+
+        // Update account 
+
+        [updateAccount.pending]: state => {
+            state.loading = true;
+        },
+        [updateAccount.fulfilled]: (state, action) => {
+            state.user = action.payload.user;
         },
     },
 });

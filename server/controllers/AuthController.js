@@ -2,6 +2,8 @@ import UserModel from "../models/UserModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv/config.js";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
 
 export const registerUser = async (req, res) => {
     const { username, password } = req.body;
@@ -76,5 +78,39 @@ export const getMe = async (req, res) => {
     return res.json({
         user,
         token,
+    });
+};
+
+export const updateAccount = async (req, res) => {
+    const { username, password } = req.body;
+
+    const user = await UserModel.findById(req.userId);
+
+    if (!user) {
+        return res.json({
+            message: "Такого користувача не існує",
+        });
+    };
+
+    const salt = bcrypt.genSaltSync(10);
+    const passwordHash = bcrypt.hashSync(password, salt);
+    
+    if (req.files) {
+        let fileName = Date.now().toString() + req.files.image.name;
+        const __dirname = dirname(fileURLToPath(import.meta.url));
+    
+        req.files.image.mv(path.join(__dirname, "..", "uploads", "userAvatars", fileName));
+
+        await UserModel.findByIdAndUpdate(req.userId, {
+            username, password: passwordHash, avatar: fileName,
+        });
+    };
+
+    await UserModel.findByIdAndUpdate(req.userId, {
+        username, password: passwordHash,
+    });
+
+    return res.json({
+        user,
     });
 };

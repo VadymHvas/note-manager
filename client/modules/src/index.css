@@ -5,7 +5,7 @@ body {
   padding: 0;
   font-family: Geologica;
   background-color: #DDC5A2;
-  height: 1000px;
+  height: 100%;
 }
 
 a {
@@ -26,6 +26,11 @@ ul {
   font-size: 18px;
   border-radius: 5px;
   font-family: Geologica;
+  transition: all .2s ease;
+}
+
+.form-input:focus {
+  outline: 2px solid #B6452C;
 }
 
 .solid-btn {
@@ -71,6 +76,13 @@ ul {
 
 .regular-link:hover {
   color: #301B28;
+}
+
+.attach-image-btn {
+  background-color: silver;
+  border: 2px dashed rgb(255, 255, 255);
+  padding: 15px 25px;
+  font-size: 18px;
 }
 
 /* #301B28, #523634, #B6452C, #DDC5A2 */

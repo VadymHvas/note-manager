@@ -1,0 +1,77 @@
+.my-profile {
+    padding: 0 30px;
+}
+
+.my-profile h1, .my-profile h3 {
+    color: #343434;
+}
+
+.profile {
+    padding: 0 50px;
+}
+
+.profile .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#objectImg {
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.update-password {
+    padding: 0 20px;
+}
+
+.my-profile #username, .my-profile #password {
+    width: 50%;
+    margin-top: -35px;
+}
+
+.my-profile #repeat-password {
+    width: 50%;
+}
+
+.my-profile .username, .my-profile .password, .my-profile .repeat-password {
+    position: relative;
+}
+
+.my-profile label[for="username"], .my-profile label[for="password"] {
+    position: absolute;
+    top: 1%;
+    left: 10px;
+    color: #A7A7A7;
+}
+
+.my-profile label[for="repeat-password"] {
+    position: absolute;
+    left: 10px;
+    top: 4%;
+    color: #A7A7A7;
+}
+
+.submit-btn {
+    margin-top: 30px;
+}
+
+.my-profile .regular-btn {
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .profile .avatar {
+        flex-direction: column;
+    }
+
+    .profile {
+        justify-content: start;
+    }
+
+    .my-profile #username, .my-profile #password, .my-profile #repeat-password {
+        width: 100%;
+    }
+}
