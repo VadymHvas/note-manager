@@ -18,16 +18,13 @@ const MyProfile = () => {
     };
 
     React.useEffect(() => {
-        if (!isAuth) navigate("/");
+        if (!window.localStorage.getItem("token")) navigate("/");
     }, [isAuth, navigate]);
 
-    console.log(isAuth);
-
-    console.log(user);
     return (
-        <div>
-            <button onClick={logoutUser}>Logout</button>
-        </div>
+        <main>
+            
+        </main>
     );
 };
 

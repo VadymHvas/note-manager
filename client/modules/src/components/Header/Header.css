@@ -1,0 +1,25 @@
+header {
+    background-color: #523634;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header-logo a {
+    color: #fafafa;
+    font-size: 18px;
+}
+
+.header-user a {
+    color: #dfdede;
+    transition: all .3s ease;
+}
+
+.header-user a:hover {
+    color: #909090;
+}

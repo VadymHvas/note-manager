@@ -24,14 +24,14 @@ const Main = () => {
     return (
         <main>
             {window.localStorage.getItem("token") ? (
-                <>
-                    <button onClick={() => logoutHandler()}>logout</button>
-                    <h1>Hello, {user.username}</h1>
-                </>
+                <div className="main">
+                    <div className="main-header">
+                        
+                    </div>
+                </div>
             ) : (
                 <NotAuth />
             )}
-
         </main>
     );
 };

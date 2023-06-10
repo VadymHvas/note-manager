@@ -11,6 +11,11 @@ const UserSchema = new mongoose.Schema({
         required: true,
     },
 
+    avatar: {
+        type: String,
+        default: "defaultAvatar.jpeg",
+    },
+
     notes: [{
         type: mongoose.Types.ObjectId,
         ref: "Todos",

@@ -2,8 +2,19 @@
 
 body {
   margin: 0;
+  padding: 0;
   font-family: Geologica;
   background-color: #DDC5A2;
+  height: 1000px;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
 }
 
 /* Ready components */
@@ -31,6 +42,35 @@ body {
 .solid-btn:hover {
   background-color: #523634;
   color: #DDC5A2;
+}
+
+.regular-btn {
+  border: 2px solid #B6452C;
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #B6452C;
+  padding: 15px 25px;
+  cursor: pointer;
+  transition: all .3s ease-out;
+}
+
+.regular-btn:hover {
+  background-color: #B6452C;
+  color: #DDC5A2;
+}
+
+.regular-link {
+  border: 0;
+  background-color: transparent;
+  color: #B6452C;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all .2s ease-out;
+}
+
+.regular-link:hover {
+  color: #301B28;
 }
 
 /* #301B28, #523634, #B6452C, #DDC5A2 */
