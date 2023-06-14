@@ -40,6 +40,10 @@
     position: relative;
 }
 
+.my-profile #username, .my-profile #password, .my-profile #repeat-password {
+    width: 100%;
+}
+
 .my-profile label[for="username"], .my-profile label[for="password"] {
     position: absolute;
     top: 1%;
@@ -69,9 +73,5 @@
 
     .profile {
         justify-content: start;
-    }
-
-    .my-profile #username, .my-profile #password, .my-profile #repeat-password {
-        width: 100%;
     }
 }

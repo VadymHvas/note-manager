@@ -11,14 +11,14 @@ import { faUser, faKey, faRepeat } from "@fortawesome/free-solid-svg-icons";
 
 const MyProfile = () => {
     const isAuth = useSelector(checkAuth);
-    const { user } = useSelector(state => state.auth);
+    const { user, message } = useSelector(state => state.auth);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     React.useEffect(() => {
         dispatch(getMe());
     }, []);
-    
+
     const [image, setImage] = React.useState();
     const [username, setUsername] = React.useState(user.username);
     const [password, setPassword] = React.useState("");
@@ -31,8 +31,6 @@ const MyProfile = () => {
         window.localStorage.removeItem("token");
     };
 
-    console.log(image);
-
     const updateAccountHandler = () => {
         const data = new FormData();
 
@@ -42,8 +40,12 @@ const MyProfile = () => {
         data.append("repeatPass", repeatPass);
 
         dispatch(updateAccount(data));
+        dispatch(getMe()); 
+        
+        if (!username || !password) return;
+        if (password !== repeatPass) return;
 
-        window.location = "/";
+        navigate("/");
     };
 
     React.useEffect(() => {
@@ -144,10 +146,18 @@ const MyProfile = () => {
                         </div>
                     </div>
 
+                    <div className="errors">
+                        <span>{message}</span>
+                    </div>
+
                     <div className="submit-btn">
                         <button className="regular-btn" onClick={updateAccountHandler}>Готово</button>
                     </div>
                 </form>
+
+                <div className="logout">
+                    <button className="regular-link" onClick={logoutUser}>Вийти</button>
+                </div>
             </div>
         </main>
     );

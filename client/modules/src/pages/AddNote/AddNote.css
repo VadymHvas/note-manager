@@ -1,0 +1,44 @@
+.addNote {
+    padding-top: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.addNote h1, .addNote h3 {
+    color: #343434;
+}  
+
+#title, #body {
+    width: 100%;
+}
+
+#body {
+    height: 200px;
+    resize: none;
+}
+
+.note-title, .note-body {
+    position: relative;
+}
+
+.addNote label[for="title"], .addNote label[for="body"] {
+    position: absolute;
+    left: 10px;
+    color: #A7A7A7;
+}
+
+.addNote label[for="title"] {
+    top: 33%;
+}
+
+.addNote label[for="body"] {
+    top: 10%;
+}
+
+.submit-btn button {
+    width: 100%;
+}
+
+.errors span {
+    color: #ff5151;
+}

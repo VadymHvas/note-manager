@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { getMe } from './redux/features/AuthSlice';
 import { useSelector } from 'react-redux';
 import Header from './components/Header/Header';
+import AddNote from './pages/AddNote/AddNote';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="myprofile" element={<MyProfile />} />
+        <Route path="addNote" element={<AddNote />} />
       </Routes>
     </div>
   );

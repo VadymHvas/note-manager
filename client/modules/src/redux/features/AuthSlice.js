@@ -90,11 +90,12 @@ export const authSlice = createSlice({
             state.loading = true;
         },
         [updateAccount.fulfilled]: (state, action) => {
-            state.user = action.payload.user;
+            state.loading = false;
+            state.message = action.payload.message;
         },
     },
 });
 
-export const checkAuth = (state) => Boolean(state.auth.token);
+export const checkAuth = state => Boolean(state.auth.token);
 export const { logout } = authSlice.actions;
 export default authSlice.reducer;

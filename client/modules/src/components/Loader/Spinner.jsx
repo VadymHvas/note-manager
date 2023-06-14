@@ -1,9 +1,9 @@
 import React from 'react';
 import "./Spinner.css"; 
 
-const Spinner = () => {
+const Spinner = ({id}) => {
     return (
-        <span className="loader"></span>
+        <span className="loader" id={id}></span>
     );
 };
 

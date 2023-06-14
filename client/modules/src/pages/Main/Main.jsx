@@ -1,12 +1,12 @@
 import React from 'react';
 import "./Main.css";
-import { register } from '../../redux/features/AuthSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { checkAuth } from '../../redux/features/AuthSlice';
 import NotAuth from '../../components/NotAuth/NotAuth';
-import { logout } from '../../redux/features/AuthSlice';
+import { getMe } from '../../redux/features/AuthSlice';
+import { getMyNotes } from "../../redux/features/NoteSlice";
 
 const Main = () => {
     const dispatch = useDispatch();
@@ -15,18 +15,17 @@ const Main = () => {
 
     const { user } = useSelector(state => state.auth);
 
-    const logoutHandler = () => {
-        dispatch(logout());
-
-        window.localStorage.removeItem("token");
-    }
+    React.useEffect(() => {
+        dispatch(getMe());
+        dispatch(getMyNotes());
+    }, []);
 
     return (
         <main>
             {window.localStorage.getItem("token") ? (
                 <div className="main">
                     <div className="main-header">
-                        
+                        <h1>Мої нотатки</h1>
                     </div>
                 </div>
             ) : (

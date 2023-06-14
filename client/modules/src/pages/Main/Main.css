@@ -1,3 +1,9 @@
 main {
     padding-top: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.main h1,.main h3 {
+    color: #343434;
 }

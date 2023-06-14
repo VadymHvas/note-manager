@@ -82,7 +82,8 @@ export const getMe = async (req, res) => {
 };
 
 export const updateAccount = async (req, res) => {
-    const { username, password } = req.body;
+    let username = req.body.username;
+    let password = req.body.password;
 
     const user = await UserModel.findById(req.userId);
 
@@ -108,9 +109,5 @@ export const updateAccount = async (req, res) => {
 
     await UserModel.findByIdAndUpdate(req.userId, {
         username, password: passwordHash,
-    });
-
-    return res.json({
-        user,
     });
 };

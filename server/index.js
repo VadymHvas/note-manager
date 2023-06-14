@@ -6,6 +6,8 @@ import { checkAuth } from "./middlewares/CheckAuth.js";
 import dotenv from "dotenv/config";
 import cors from "cors";
 import fileUpload from "express-fileupload";
+import { createNote, getMyNotes } from "./controllers/NoteController.js";
+import { createNoteValidation } from "./validations/NoteValidation.js";
 
 const DB_URL = process.env.DB_URL;
 
@@ -20,10 +22,17 @@ app.use(cors());
 app.use(fileUpload());
 app.use(express.static("uploads"));
 
+// Auth routes
+
 app.post("/auth/register", registerValidation, registerUser);
 app.post("/auth/login", loginUser);
 app.get("/getMe", checkAuth, getMe);
 app.post("/updateAccount", checkAuth, updateValidation, updateAccount);
+
+// Note routes
+
+app.post("/note/create", checkAuth, createNoteValidation, createNote);
+app.get("/note/getMyNotes", checkAuth, getMyNotes);
 
 app.listen(4444, () => {
     console.log("SERVER OK");

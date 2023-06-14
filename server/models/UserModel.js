@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
 
     notes: [{
         type: mongoose.Types.ObjectId,
-        ref: "Todos",
+        ref: "Note",
     }],
 }, {
     timestamps: true,
