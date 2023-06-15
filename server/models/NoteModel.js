@@ -15,18 +15,13 @@ const NoteSchema = new mongoose.Schema({
         type: String,
         default: false,
     },
+
+    isFavorite: {
+        type: String,
+        default: false,
+    },
  
     author: {
-        type: String,
-        required: true,
-    },
-
-    username: {
-        type: String,
-        required: true,
-    },
-
-    userAvatar: {   
         type: String,
         required: true,
     },

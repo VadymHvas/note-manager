@@ -3,6 +3,7 @@ import axios from "../../axios/axios.js";
 
 const initialState = {
     myNotes: [],
+    fullNote: {},
     loading: false,
     message: null,
 };
@@ -19,12 +20,24 @@ export const getMyNotes = createAsyncThunk("note/getMyNotes", async () => {
     return data;
 });
 
+export const getFullNote = createAsyncThunk("note/fullNote", async ({id}) => {
+    const { data } = await axios.post(`/note/fullNote`, {id});
+
+    return data;
+});
+
+export const deleteNote = createAsyncThunk("note/delete", async ({id}) => {
+    const { data } = await axios.post("/note/deleteNote", { id });
+
+    return data;
+});
+
 export const noteSlice = createSlice({
     name: "note",
     initialState,
     reducers: {
-        rand: () => {
-            console.log(Math.random());
+        resetFullNoteState: (state, action) => {
+            state.fullNote = action.type;
         },
     },
     extraReducers: {
@@ -46,8 +59,31 @@ export const noteSlice = createSlice({
         [getMyNotes.fulfilled]: (state, action) => {
             state.loading = false;
             state.myNotes = action.payload.myNotes;
+            state.message = action.payload.message;
+        },
+
+        // Get full note
+
+        [getFullNote.pending]: state => {
+            state.loading = true;
+        },
+        [getFullNote.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.fullNote = action.payload.fullNote;
+            state.message = action.payload.message;
+        },
+
+        // Delete note
+
+        [deleteNote.pending]: state => {
+            state.loading = true;
+        },
+        [deleteNote.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.message = action.payload.message;
         },
     },
 });
 
 export default noteSlice.reducer;
+export const { resetFullNoteState } = noteSlice.actions;

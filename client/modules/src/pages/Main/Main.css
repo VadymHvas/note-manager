@@ -7,3 +7,19 @@ main {
 .main h1,.main h3 {
     color: #343434;
 }
+
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+.update-notes span {
+    font-size: 24px;
+    color: #343434;
+    cursor: pointer;
+}
+
+.my-notes {
+    padding: 0 20px;
+}
