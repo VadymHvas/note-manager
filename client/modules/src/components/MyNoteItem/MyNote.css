@@ -6,7 +6,6 @@
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
-    cursor: pointer;    
     align-items: center;
 }
 
@@ -24,6 +23,10 @@
     gap: 5px;
 }
 
+.note-data {
+    cursor: pointer;
+}
+
 .note-header .note-username h3 {
     font-weight: 400;
     color: #d8d8d8;
@@ -37,8 +40,7 @@
     margin-top: 10px;
 }
 
-.note-settings .complete {
-    font-size: 24px;
+.note-settings .delete {
     cursor: pointer;
 }
 

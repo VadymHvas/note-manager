@@ -11,11 +11,6 @@ const NoteSchema = new mongoose.Schema({
         required: true,
     },
 
-    isComplete: {
-        type: String,
-        default: false,
-    },
-
     isFavorite: {
         type: String,
         default: false,

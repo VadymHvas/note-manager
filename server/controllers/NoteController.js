@@ -40,7 +40,7 @@ export const getMyNotes = async (req, res) => {
         }),
     );
 
-    if (!myNotes) {
+    if (myNotes.length === 0) {
         return res.json({message: "Нотаток немає"});
     };
 
@@ -84,4 +84,56 @@ export const deleteNote = async (req, res) => {
     });
 
     await NoteModel.findByIdAndDelete(id);
+};
+
+export const addToFavorite = async (req, res) => {
+    const { id } = req.body;
+
+    const note = await NoteModel.findById(id);
+
+    if (!note) {
+        return res.json({
+            message: "Нотатки не існує",
+        });
+    };
+
+    await NoteModel.findByIdAndUpdate(id, {
+        isFavorite: true,
+    });
+};
+
+export const removeFromFavorite = async (req, res) => {
+    const { id } = req.body;
+
+    const note = await NoteModel.findById(id);
+
+    if (!note) {
+        return res.json({
+            message: "Нотатки не існує",
+        });
+    };
+
+    await NoteModel.findByIdAndUpdate(id, {
+        isFavorite: false,
+    });
+};
+
+export const getFavorites = async (req, res) => {
+    const user = await UserModel.findById(req.userId);
+
+    if (!user) {
+        return res.json({
+            message: "Користувача не існує!",
+        });
+    };
+
+    if (user.notes.length === 0) return false;
+    
+    const favoriteNotes = await Promise.all(
+        user.notes.map(note => {
+            return NoteModel.find({isFavorite: "true", _id: note._id});
+        }),
+    );
+
+    return res.json({favoriteNotes});
 };

@@ -78,10 +78,13 @@ export const authSlice = createSlice({
 
         // Get me
 
-        [getMe.pending]: () => {},
+        [getMe.pending]: state => {
+            state.loading = true;
+        },
         [getMe.fulfilled]: (state, action) => {
             state.user = action.payload.user;
             state.token = action.payload.token;
+            state.loading = false;
         },
 
         // Update account 

@@ -7,7 +7,7 @@ import { checkAuth } from '../../redux/features/AuthSlice';
 import "./MyProfile.css";
 import UserAvatar from '../../components/UserAvatar/UserAvatar';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faKey, faRepeat } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faKey, faRepeat, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 const MyProfile = () => {
     const isAuth = useSelector(checkAuth);
@@ -57,6 +57,10 @@ const MyProfile = () => {
             <div className="my-profile">
                 <div className="my-profile-header">
                     <h1>Мій профіль</h1>
+
+                    <div className="logout">
+                        <button className="regular-link" onClick={logoutUser}>Вийти <FontAwesomeIcon icon={faArrowRightFromBracket} /></button>
+                    </div>
                 </div>
 
                 <form className="profile" method="post" onSubmit={e => e.preventDefault()}>
@@ -154,10 +158,6 @@ const MyProfile = () => {
                         <button className="regular-btn" onClick={updateAccountHandler}>Готово</button>
                     </div>
                 </form>
-
-                <div className="logout">
-                    <button className="regular-link" onClick={logoutUser}>Вийти</button>
-                </div>
             </div>
         </main>
     );

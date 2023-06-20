@@ -5,7 +5,8 @@ import { faNoteSticky, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { createNote } from '../../redux/features/NoteSlice';
+import { createNote, resetMyNoteState } from '../../redux/features/NoteSlice';
+import { resetMessageState } from '../../redux/features/NoteSlice';
 import Spinner from "../../components/Loader/Spinner";
 
 const AddNote = () => {
@@ -20,6 +21,8 @@ const AddNote = () => {
 
     React.useEffect(() => {
         if (!window.localStorage.getItem("token")) navigate("/");
+        dispatch(resetMessageState());
+        dispatch(resetMyNoteState());
     }, [isAuth, navigate]);
 
     const createNoteHandler = () => {

@@ -14,12 +14,44 @@ main {
     justify-content: space-between;
 } 
 
-.update-notes span {
+.main-notes-settings {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.update-notes span, .filter-notes span, .add-note span {
     font-size: 24px;
     color: #343434;
     cursor: pointer;
 }
 
+.add-note span {
+    font-weight: 700;
+    font-size: 36px;
+}
+
 .my-notes {
     padding: 0 20px;
+}
+
+.skeleton-wrapper {
+    background-color: #523634;
+    padding: 25px 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+.skeleton-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.skeleton-title {
+    margin-top: 10px;
+}
+
+.skeleton-date {
+    margin-top: 15px;
 }

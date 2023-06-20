@@ -6,6 +6,12 @@
     color: #343434;
 }
 
+.my-profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .profile {
     padding: 0 50px;
 }

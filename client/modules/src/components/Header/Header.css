@@ -16,9 +16,15 @@ header {
     font-size: 18px;
 }
 
-.header-user a {
+.header-user a, .header-user span {
     color: #dfdede;
     transition: all .3s ease;
+}
+
+.header-user span {
+    display: flex;
+    align-items: center;
+    gap: 1px;
 }
 
 .header-user a:hover {

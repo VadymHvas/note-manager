@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from 'react-redux';
+import Skeleton from "../Loader/Skeleton";
 
 const Header = () => {
-    const { user } = useSelector(state => state.auth);
+    const { user, loading } = useSelector(state => state.auth);
 
     return (
         <header>
@@ -17,9 +18,15 @@ const Header = () => {
             </div>
             <div className="header-user">
                 <div className="user">
-                    <Link to="/myprofile">
-                        {user.username} <FontAwesomeIcon icon={faUser} />
-                    </Link>
+                    {loading ? (
+                        <span>
+                            <Skeleton w={"50px"} h={"15px"} color={"#b7b7b7"} /> <FontAwesomeIcon icon={faUser} />
+                        </span>
+                    ) : (
+                        <Link to="/myprofile">
+                            {user.username} <FontAwesomeIcon icon={faUser} />
+                        </Link>
+                    )}
                 </div>
             </div>
         </header>

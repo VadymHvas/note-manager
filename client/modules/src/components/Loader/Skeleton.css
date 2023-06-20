@@ -1,0 +1,8 @@
+#skeleton {
+    background: #DDC5A2;
+    border-radius: 10px;
+}
+
+#skeleton.rounded {
+    border-radius: 100%;
+}
