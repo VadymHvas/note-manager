@@ -39,6 +39,17 @@ app.use(cors());
 app.use(fileUpload());
 app.use(express.static("uploads"));
 
+
+app.get("/", async (req, res) => {
+  res.send("Home route");
+
+  const users = await UserModel.find();
+
+  return res.json({
+    users,
+  });
+});
+
 // Auth routes
 
 app.get("/getMe", checkAuth, getMe);
