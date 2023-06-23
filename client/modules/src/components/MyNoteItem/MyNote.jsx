@@ -16,13 +16,13 @@ const MyNote = ({note}) => {
     const { user } = useSelector(state => state.auth);
 
     const deleteNoteHandler = (id) => {
-        dispatch(deleteNote({id}));
-
         document.querySelector(`.note.note-${id}`).style.display = "none";
+        
+        dispatch(deleteNote({id}));
 
         setTimeout(() => {
             dispatch(getMyNotes());
-        }, 100);
+        }, 400);
     };
 
     const addFavoriteHandler = (id) => {
