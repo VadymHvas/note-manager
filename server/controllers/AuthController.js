@@ -100,7 +100,7 @@ export const updateAccount = async (req, res) => {
         let fileName = Date.now().toString() + req.files.image.name;
         const __dirname = dirname(fileURLToPath(import.meta.url));
     
-        req.files.image.mv(path.join(__dirname, "..", "uploads", "userAvatars", fileName));
+        req.files.image.mv(path.join(__dirname, "..", "uploads", fileName));
 
         await UserModel.findByIdAndUpdate(req.userId, {
             username, password: passwordHash, avatar: fileName,
