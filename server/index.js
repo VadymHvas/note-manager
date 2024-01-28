@@ -41,13 +41,7 @@ app.use(express.static("uploads"));
 
 
 app.get("/", async (req, res) => {
-  res.send("Home route");
-
-  const users = await UserModel.find();
-
-  return res.json({
-    users,
-  });
+  res.json("Home route");
 });
 
 // Auth routes
